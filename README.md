@@ -24,3 +24,7 @@ Methods:
 * `get_median` (returns the median of all digits of the number)
 * `get_range` (returns the range of all digits of the number)
 * `get_frequency` (returns a dictionary with the frequency of each digit)
+
+
+
+# my changes
