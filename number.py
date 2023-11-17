@@ -1,3 +1,4 @@
+import math
 class Number:
     def __init__(self, value: int):
         self.value = value
@@ -9,7 +10,7 @@ class Number:
 
         returns: int
         """
-        pass
+        return self.value
 
     def is_odd(self):
         """
@@ -18,7 +19,7 @@ class Number:
         returns: bool
 
         """
-        pass
+        return self.value%2==0
 
     def is_even(self):
         """
@@ -26,7 +27,7 @@ class Number:
 
         returns: bool
         """
-        pass
+        return
 
     def is_prime(self):
         """
@@ -34,8 +35,10 @@ class Number:
 
         returns: bool
         """
-        pass
-
+        for i in range(2,int(math.sqrt(self.value))+1):
+            if self.value%i==0:
+                return False
+            return True
     def get_divisors(self):
         """
         Returns a list of all the divisors of the number.
@@ -130,8 +133,9 @@ class Number:
 
         returns: dict
         """
-        pass
+        
     
 
 # Create a new instance of Number
-number = Number(3)
+numbber = Number(15)
+print(numbber.is_prime())
