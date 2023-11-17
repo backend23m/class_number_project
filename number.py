@@ -18,7 +18,7 @@ class Number:
         returns: bool
 
         """
-        return self.value%2==1
+        return self.value % 2 == 1
 
     def is_even(self):
         """
@@ -140,7 +140,3 @@ class Number:
         returns: dict
         """
         pass
-    
-
-# Create a new instance of Number
-number = Number(3)
