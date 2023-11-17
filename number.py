@@ -34,15 +34,24 @@ class Number:
 
         returns: bool
         """
-        pass
-
+        s=0
+        for i in range(self.value//2):
+            if self.value%i:
+                s+=1
+        return s==1
     def get_divisors(self):
         """
         Returns a list of all the divisors of the number.
 
         returns: list
         """
-        pass
+        l=[]
+        for i in range(self.value//2):
+            if self.value%i==0:
+                l.append(i)
+        l.append(self.value)
+        return l
+
 
     def get_length(self):
         """
