@@ -1,3 +1,4 @@
+import math
 class Number:
     def __init__(self, value: int):
         self.value = value
@@ -28,13 +29,19 @@ class Number:
         """
         return not self.is_odd()
 
-    def is_prime(self):
+    def is_prime(self): 
         """
         Returns True if the number is prime, otherwise False.
 
         returns: bool
         """
-        
+        import math
+        if self.value == 1:
+            return False
+        if self.value == 2:
+            return True
+        if self.value > 2 and self.value % 2 == 0:
+            return False
 
     def get_divisors(self):
         """
@@ -42,7 +49,11 @@ class Number:
 
         returns: list
         """
-        pass
+        divisors = []
+        for i in range(1, self.value + 1):
+            if self.value % i == 0:
+                divisors.append(i)
+        return divisors   
 
     def get_length(self):
         """
@@ -50,7 +61,7 @@ class Number:
 
         returns: int
         """
-        pass
+        return len(str(self.value))
 
     def get_sum(self):
         """
@@ -58,7 +69,11 @@ class Number:
 
         returns: int
         """
-        pass
+        number_str = str(self.value)
+
+        digit_sum = sum(int(digit) for digit in number_str)
+
+        return digit_sum
 
     def get_reverse(self):
         """
@@ -66,7 +81,9 @@ class Number:
 
         returns: int
         """
-        pass
+        reversed_number = int(str(self.value)[::-1])
+
+        return reversed_number
 
     def is_palindrome(self):
         """
@@ -74,7 +91,8 @@ class Number:
 
         returns: bool
         """
-        pass
+        number_str = str(self.value)
+        return number_str == number_str[::-1]
 
     def get_digits(self):
         """
@@ -82,7 +100,9 @@ class Number:
 
         returns: list
         """
-        pass
+        number_str = str(self.value)
+        digits = [int(digit) for digit in number_str]
+        return digits
 
     def get_max(self):
         """
@@ -90,7 +110,9 @@ class Number:
 
         returns: int
         """
-        pass
+        number_str = str(self.value)
+        max_digit = max(int(digit) for digit in number_str)
+        return max_digit
 
     def get_min(self):
         """
@@ -98,7 +120,9 @@ class Number:
 
         returns: int
         """
-        pass
+        number_str = str(self.value)
+        min_digit = min(int(digit) for digit in number_str)
+        return min_digit
 
     def get_average(self):
         """
@@ -106,7 +130,12 @@ class Number:
 
         returns: float
         """
-        pass
+        number_str = str(self.value)
+        digits = [int(digit) for digit in number_str]
+        average = sum(digits) / len(digits)
+
+        return average
+
 
     def get_median(self):
         """
@@ -122,7 +151,11 @@ class Number:
 
         returns: list
         """
-        pass
+        number_str = str(self.value)
+
+        digits = [int(digit) for digit in number_str]
+
+        return range(min (digits),max(digits) +1)
 
     def get_frequency(self):
         """
@@ -130,7 +163,21 @@ class Number:
 
         returns: dict
         """
-        pass
+        number_str = str(self.value)
+
+        # Initialize an empty dictionary to store digit frequencies
+        frequency_dict = {}
+
+        # Count the frequency of each digit
+        for digit in number_str:
+            # If the digit is already in the dictionary, increment its count
+            if digit in frequency_dict:
+                frequency_dict[digit] += 1
+            # If the digit is not in the dictionary, add it with count 1
+            else:
+                frequency_dict[digit] = 1
+
+        return frequency_dict
     
 
 # Create a new instance of Number
