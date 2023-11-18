@@ -144,6 +144,7 @@ class Number:
         returns: float
         """
         pass
+        
 
     def get_range(self):
         """
