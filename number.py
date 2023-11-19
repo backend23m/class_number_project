@@ -118,7 +118,13 @@ class Number:
 
         returns: float
         """
-        pass
+        lst=self.get_digits()
+        lst.sort
+        l=len(lst)
+        if l%2==0:
+            return (lst[l//2-1]+lst[l//2])/2
+        else:
+            return lst[l//2]
 
     def get_range(self):
         """
@@ -134,8 +140,11 @@ class Number:
 
         returns: dict
         """
-        pass
-    
+        st=set(self.get_digits())
+        dict={}
+        for i in st:
+            dict[i]=self.get_digits().count(i)
+        return dict    
 
 # Create a new instance of Number
 number = Number(3)
