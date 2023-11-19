@@ -1,3 +1,5 @@
+from math import sqrt
+
 class Number:
     def __init__(self, value: int):
         self.value = value
@@ -18,7 +20,7 @@ class Number:
         returns: bool
 
         """
-        return self.value % 2 == 1
+        return self.value % 2
 
     def is_even(self):
         """
@@ -34,24 +36,22 @@ class Number:
 
         returns: bool
         """
-        s=0
-        for i in range(self.value//2):
-            if self.value%i:
-                s+=1
-        return s==1
+        for i in range(2, int(sqrt(self.value)+1)):
+            if self.value % i == 0:
+                return False
+        return True
+    
     def get_divisors(self):
         """
         Returns a list of all the divisors of the number.
 
         returns: list
         """
-        l=[]
-        for i in range(self.value//2):
-            if self.value%i==0:
-                l.append(i)
-        l.append(self.value)
-        return l
-
+        divisors = [1, self.value]
+        for i in range(2, int(sqrt(self.value)) + 1):
+            if self.value % i == 0:
+                divisors.append(i)
+        return sorted(divisors)
 
     def get_length(self):
         """
@@ -59,7 +59,7 @@ class Number:
 
         returns: int
         """
-        pass
+        return len(str(self.value))
 
     def get_sum(self):
         """
@@ -67,7 +67,8 @@ class Number:
 
         returns: int
         """
-        pass
+        numbers = [int(i) for i in str(self.value)]
+        return sum(numbers)
 
     def get_reverse(self):
         """
@@ -75,7 +76,7 @@ class Number:
 
         returns: int
         """
-        pass
+        return int(str(self.value)[::-1])
 
     def is_palindrome(self):
         """
@@ -83,7 +84,10 @@ class Number:
 
         returns: bool
         """
-        pass
+        if self.get_length()%2:
+            return self.value == self.get_reverse()
+
+        return False
 
     def get_digits(self):
         """
@@ -91,7 +95,7 @@ class Number:
 
         returns: list
         """
-        pass
+        return [int(i) for i in str(self.value)]
 
     def get_max(self):
         """
@@ -99,7 +103,7 @@ class Number:
 
         returns: int
         """
-        pass
+        return max(self.get_digits())
 
     def get_min(self):
         """
@@ -107,7 +111,7 @@ class Number:
 
         returns: int
         """
-        pass
+        return min(self.get_digits())
 
     def get_average(self):
         """
@@ -115,7 +119,7 @@ class Number:
 
         returns: float
         """
-        pass
+        return self.get_sum() / self.get_length() 
 
     def get_median(self):
         """
@@ -123,7 +127,14 @@ class Number:
 
         returns: float
         """
-        pass
+        length = self.get_length()
+        h_len = length//2
+        s_number = str(self.value)
+
+        if length % 2:
+            return float((s_number)[h_len])
+
+        return (float(s_number[h_len]) + float(s_number[h_len - 1])) / 2
 
     def get_range(self):
         """
@@ -131,7 +142,7 @@ class Number:
 
         returns: list
         """
-        pass
+        return [list(range(i+1)) for i in self.get_digits()]
 
     def get_frequency(self):
         """
@@ -139,4 +150,14 @@ class Number:
 
         returns: dict
         """
-        pass
+        
+        numbers = self.get_digits()
+        l = list(set(numbers))
+        dct = {}
+        for i in l:
+            dct[i] = 0
+
+        for key in dct.keys():
+            dct[key] = numbers.count(key)
+
+        return dct
