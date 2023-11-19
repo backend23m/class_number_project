@@ -35,7 +35,7 @@ class Number:
         returns: bool
         """
         s=0
-        for i in range(self.value//2):
+        for i in range(1,self.value//2):
             if self.value%i:
                 s+=1
         return s==1
@@ -46,12 +46,11 @@ class Number:
         returns: list
         """
         l=[]
-        for i in range(self.value//2):
+        for i in range(1,self.value//2):
             if self.value%i==0:
                 l.append(i)
         l.append(self.value)
         return l
-
 
     def get_length(self):
         """
@@ -59,7 +58,7 @@ class Number:
 
         returns: int
         """
-        pass
+        return len(str(self.value))
 
     def get_sum(self):
         """
@@ -67,7 +66,7 @@ class Number:
 
         returns: int
         """
-        pass
+        return sum(self.get_digits())
 
     def get_reverse(self):
         """
@@ -75,15 +74,14 @@ class Number:
 
         returns: int
         """
-        pass
-
+        return int(str(self.get_number())[::-1])
     def is_palindrome(self):
         """
         Returns True if the number is a palindrome, otherwise False.
 
         returns: bool
         """
-        pass
+        return self.get_number()==self.get_reverse()
 
     def get_digits(self):
         """
@@ -91,7 +89,7 @@ class Number:
 
         returns: list
         """
-        pass
+        return [int(i) for i in str(self.value)]
 
     def get_max(self):
         """
@@ -99,7 +97,7 @@ class Number:
 
         returns: int
         """
-        pass
+        return max(self.get_digits())
 
     def get_min(self):
         """
@@ -107,15 +105,15 @@ class Number:
 
         returns: int
         """
-        pass
-
+        return min(self.get_digits())
+    
     def get_average(self):
         """
         Returns the average of all the digits in the number.
 
         returns: float
         """
-        pass
+        return self.get_sum()/self.get_length()
 
     def get_median(self):
         """
@@ -123,15 +121,19 @@ class Number:
 
         returns: float
         """
-        pass
-
+        a=sorted(self.get_digits())
+        b=self.get_length()//2
+        if self.get_length()%2==0:
+            return (a[b-1]+a[b])/2
+        else:
+            return a[b]
     def get_range(self):
         """
         Returns the range of all the digits in the number.
 
         returns: list
         """
-        pass
+        return self.get_max()-self.get_min()
 
     def get_frequency(self):
         """
@@ -139,4 +141,12 @@ class Number:
 
         returns: dict
         """
-        pass
+        d={}
+        for i in sorted(self.get_digits()):
+            d[i]=0
+        for i in self.get_digits():
+            d[i]+=1
+        return d
+    
+# Create a new instance of Number
+number = Number(3)
