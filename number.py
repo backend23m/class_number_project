@@ -154,10 +154,8 @@ class Number:
         numbers = self.get_digits()
         l = list(set(numbers))
         dct = {}
-        for i in l:
-            dct[i] = 0
 
-        for key in dct.keys():
+        for key in l:
             dct[key] = numbers.count(key)
 
         return dct
